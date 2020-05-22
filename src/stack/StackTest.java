@@ -23,6 +23,6 @@ public class StackTest {
 //        System.out.println(stack.contains(10)); // true
 
 //        stack.display();
-        System.out.println(stack.pop());
+//        System.out.println(stack.pop());
     }
 }

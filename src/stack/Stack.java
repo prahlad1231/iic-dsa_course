@@ -52,9 +52,10 @@ public class Stack {
     }
 
     public boolean contains(int element) {
-        if (search(element) == -1) return false;
-        return true;
+//        if (search(element) == -1) return false;
+//        return true;
         // using ternary operator
+        return (search(element) == -1) ? true : false;
     }
 
     public int search(int element) { // linear search
