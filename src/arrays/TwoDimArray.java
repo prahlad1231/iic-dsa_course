@@ -37,10 +37,50 @@ public class TwoDimArray {
 
     public static void subtractMatrix(int[][] matrix1, int[][] matrix2) {
         // to be done by student
+        int row1 = matrix1.length;
+        int col1 = matrix1[0].length;
+        int row2 = matrix2.length;
+        int col2 = matrix2[0].length;
+
+        if (row1 != row2 && col1 != col2) {
+            System.out.println("ERROR: cannot perform subtraction");
+            return;
+        }
+
+        int[][] result = new int[row1][col1];
+        for (int i = 0; i < row1; ++i) {
+            for (int j = 0; j < col1; ++j) {
+                result[i][j] = matrix1[i][j] - matrix2[i][j];
+            }
+        }
+
+        System.out.println("Subtraction is : ");
+        printMatrix(result, row1, col1);
     }
 
     public static void multiplyMatrix(int[][] matrix1, int[][] matrix2) {
         // to be done by student
+        int row1 = matrix1.length;
+        int col1 = matrix1[0].length;
+        int row2 = matrix2.length;
+        int col2 = matrix2[0].length;
+
+        if (col1 != row2) {
+            System.out.println("ERROR: cannot perform multiplication");
+            return;
+        }
+
+        int[][] result = new int[row1][col2];
+        for (int i = 0; i < row1; ++i) {
+            for (int j = 0; j < col1; ++j) {
+                for (int k = 0; k < row2; ++k) {
+                    result[i][j] += (matrix1[i][k] * matrix2[k][j]);
+                }
+            }
+        }
+
+        System.out.println("Multiplication is: ");
+        printMatrix(result, row1, col2);
     }
 
     public static void main(String[] args) {
@@ -74,6 +114,8 @@ public class TwoDimArray {
 //        System.out.println("Matrix 2 is : ");
 //        printMatrix(matrix2, row2, col2);
 
-        addMatrix(matrix1, matrix2);
+//        addMatrix(matrix1, matrix2);
+//        subtractMatrix(matrix1, matrix2);
+        multiplyMatrix(matrix1, matrix2);
     }
 }
