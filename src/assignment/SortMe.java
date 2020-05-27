@@ -8,6 +8,12 @@ public class SortMe {
         System.out.println();
     }
 
+    /*
+        find the squares of the sorted array and then
+        sort the result
+        Example: input: [-2, -1, 3, 4]
+                output: [1, 4, 9, 16]
+     */
     public static void sort(int[] arr) {
         // to be done by student
 
