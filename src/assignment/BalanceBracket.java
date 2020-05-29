@@ -1,5 +1,7 @@
 package assignment;
 
+import java.util.Stack;
+
 public class BalanceBracket {
 
     /*
@@ -11,7 +13,29 @@ public class BalanceBracket {
      */
     public static boolean isBalanced(String s) {
         // to be done by student
-        return false;
+        Stack<Character> stack = new Stack<>();
+        int len = s.length();
+        for (int i = 0; i < len; ++i) {
+            char c = s.charAt(i);
+            switch (c) {
+                // we want to push the character in stack for all cases of opening bracket
+                case '[':
+                case '{':
+                case '(':
+                    stack.push(c);
+                    break;
+                case ')':
+                    if (stack.empty() || stack.pop() != '(') return false;
+                    break;
+                case '}':
+                    if (stack.empty() || stack.pop() != '{') return false;
+                    break;
+                case ']':
+                    if (stack.empty() || stack.pop() != '[') return false;
+                    break;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {

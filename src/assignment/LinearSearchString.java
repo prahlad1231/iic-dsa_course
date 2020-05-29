@@ -7,6 +7,10 @@ public class LinearSearchString {
      */
     public static int search(String[] names, String name) {
         // should be done by student
+        int len = names.length;
+        for (int i = 0; i < len; ++i) {
+            if (names[i].equals(name)) return i;
+        }
         return -1;
     }
 
@@ -17,7 +21,7 @@ public class LinearSearchString {
         for (int i = 0; i < toBeSearched.length; ++i) {
             int index = search(names, toBeSearched[i]);
             if (index == -1) {
-                System.out.println("Not found!");
+                System.out.println(toBeSearched[i] + " not found!");
             } else {
                 System.out.println(toBeSearched[i] + " found at: " + index);
             }
