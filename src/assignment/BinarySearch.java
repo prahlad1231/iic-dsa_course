@@ -4,6 +4,13 @@ public class BinarySearch {
 
     int binarySearch(String[] names, int startIndex, int endIndex, String name) {
         // to be done by student
+        if (startIndex > endIndex) return -1;
+        int mid = (startIndex + endIndex) / 2;
+        if (names[mid].equals(name)) return mid;
+        else if (names[mid].compareTo(name) < 0)
+            return binarySearch(names, mid + 1, endIndex, name);
+        else if (names[mid].compareTo(name) > 0)
+            return binarySearch(names, startIndex, mid - 1, name);
         return -1;
     }
 

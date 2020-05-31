@@ -4,7 +4,11 @@ public class RecursionAssignment {
 
     int addOddNumber(int n) {
         // to be done by student
-        return -1;
+        if (n == 1) return 1;
+        if (n % 2 == 0) {
+            return addOddNumber(n-1);
+        }
+        return n + addOddNumber(n-2);
     }
 
     public static void main(String[] args) {
