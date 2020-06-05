@@ -18,7 +18,26 @@ public class ArrayDeletion {
         'arr' might not be sorted
      */
     public static void delete(int[] arr, int num) {
+        boolean found = false;
+        for (int i = 0; i < arr.length; ++i) {
+            if (arr[i] == num) {
+                found = true;
+                arr[i] = 0;
+                shift(arr, i);
+                break; // since the array contains all unique elements
+            }
+        }
+        if (!found)
+            System.out.println("Error!");
+    }
 
+    private static void shift(int[] arr, int index) {
+        if (index == arr.length - 1) return;
+        for (int i = index; i < arr.length -1; ++i) {
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
     }
 
     public static void main(String[] args) {

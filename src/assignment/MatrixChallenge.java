@@ -11,26 +11,57 @@ public class MatrixChallenge {
     public static int[][] buildIdentityMatrix(int row, int col) {
         if (row <= 0 || col <= 0) return null;
         // to be done by student
-        return null;
+        if (row != col) return null;
+        int[][] result = new int[row][col];
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (i == j) result[i][j] = 1;
+            }
+        }
+        return result;
     }
 
     // return true if given matrix is a square matrix, false otherwise
     // Constraint: assume, the number of columns are uniform for all rows
     public static boolean isSquareMatrix(int[][] matrix) {
         // to be done by student
-        return false;
+        int row = matrix.length;
+        for (int i = 0; i < row; ++i) {
+            if (matrix[i].length != row) return false;
+        }
+        return true;
     }
 
     // return true if given matrix is upper triangular matrix, false otherwise
     public static boolean isUpperTriangularMatrix(int[][] matrix) {
         // to be done by student
-        return false;
+        if (!isSquareMatrix(matrix)) return false;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        for (int i = 1; i < row; ++i) {
+            for (int j = 0; j < col-1; ++j) {
+                if (j == i) break;
+                if (matrix[i][j] == 0) continue;
+                else return false;
+            }
+        }
+        return true;
     }
 
     // return true if given matrix is lower triangular matrix, false otherwise
     public static boolean isLowerTriangularMatrix(int[][] matrix) {
         // to be done by student
-        return false;
+        if (!isSquareMatrix(matrix)) return false;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        for (int i = 0; i < row-1; ++i) {
+            for (int j = 1; j < col; ++j) {
+                if (i >= j) continue;
+                if (matrix[i][j] == 0) continue;
+                else return false;
+            }
+        }
+        return true;
     }
 
     // return specific row from a matrix (if possible), otherwise return null
@@ -38,7 +69,12 @@ public class MatrixChallenge {
     // So, getRow(matrix, 1) means getRow of matrix at index 0
     public static int[] getRow(int[][] matrix, int row) {
         // to be done by student
-        return null;
+        if (matrix.length < row) return null;
+        row -= 1;
+        int[] temp = new int[matrix[0].length];
+        for (int i = 0; i < matrix[0].length; ++i)
+            temp[i] = matrix[row][i];
+        return temp;
     }
 
     // return specific column from a matrix (if possible), otherwise return null
@@ -46,7 +82,12 @@ public class MatrixChallenge {
     // So, getCol(matrix, 1) means getCol of matrix at index 0
     public static int[] getColumn(int[][] matrix, int col) {
        // to be done by student
-       return null;
+        if (matrix[0].length < col) return null;
+        col -= 1;
+        int[] temp = new int[matrix.length];
+        for (int i = 0; i < matrix.length; ++i)
+            temp[i] = matrix[i][col];
+        return temp;
     }
 
     // replace all occurrence of initialValue with finalValue
@@ -59,6 +100,14 @@ public class MatrixChallenge {
      */
     public static void replace(int[][] matrix, int initialValue, int finalValue) {
         // to be done by student
+        int row = matrix.length;
+        int col = matrix[0].length;
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (matrix[i][j] == initialValue)
+                    matrix[i][j] = finalValue;
+            }
+        }
     }
 
 /***********************************ALL THE BEST***************************************/
@@ -70,7 +119,7 @@ public class MatrixChallenge {
         printMatrix(mat2);
         int[][] mat3 = buildIdentityMatrix(10, 10);
         printMatrix(mat3);
-        int[][] mat4 = buildIdentityMatrix(10,5); // ERROR
+        int[][] mat4 = buildIdentityMatrix(10,5); // NULL
         printMatrix(mat4);
 
         System.out.println(isSquareMatrix(mat1)); // true
