@@ -12,7 +12,7 @@ public class FeatureTwo {
 
     public static void main(String[] args) {
         ArrayList<String> names = new ArrayList<>();
-        String str = "name";
+        String str = "name";  
         for (int i = 0; i < 20; ++i)
             names.add(str+i);
 //        System.out.println(names.toString());
